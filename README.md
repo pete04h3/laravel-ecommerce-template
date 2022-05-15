@@ -77,7 +77,7 @@ You can now access the server at http://localhost:8000
 
 ## Database seeding
 
-**Populate the database with seed data with relationships which includes users, articles, comments, tags, favorites and follows. This can help you to quickly start testing the api or couple a frontend and start using it with ready content.**
+**Populate the database with dummy data. This can help you to quickly start testing the api or frontend and start using it with out-of-the-box content.**
 
 Open the DatabaseSeeder and set the property values as per your requirement
 
@@ -92,6 +92,8 @@ Run the database seeder and you're done
     php artisan migrate:refresh
     
 ## Docker
+
+# Advanced users
 
 To install with [Docker](https://www.docker.com), run following commands:
 
