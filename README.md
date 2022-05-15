@@ -98,26 +98,34 @@ Run the database seeder and you're done
 To install with [Docker](https://www.docker.com), run following commands:
 
 ```
+ADD NON ROOT USER (you might not need this)
 usermod -a -G docker user
 su - user
 docker run hello-world
+---------------------------------------------------------------------
+git clone https://github.com/pete04h3/laravel-ecommerce-template.git
+or with SSH:
 git clone git@gitlab.com:peterp4N1K/laravel-ecommerce-template.git
+---------------------------------------------------------------------
 cd laravel-ecommerce-template
 docker run -v $(pwd):/app composer install
 sudo chown -R $USER:$USER ~/path-to/laravel-ecommerce-template
+---------------------------------------------------------------------
 docker-compose up -d --build
 docker-compose ps
 docker-compose images
 netstat -plntu
+---------------------------------------------------------------------
 cp .env.example.docker .env
 docker-compose exec app php artisan key:generate
 docker-compose exec app php artisan config:cache
 docker-compose exec app php artisan migrate
-
+---------------------------------------------------------------------
 <-- if you want to change database configuration -->
 run this cmd: docker-compose exec app vim .env
 <-- if you want to seed database -->
 docker-compose exec app php artisan db:seed
+---------------------------------------------------------------------
 ```
 # If there is no errors you should now be able to see your project
 The app can be accessed at [http://laravel.ecommerce-template.io/](http://laravel.ecommerce-template.io/).
