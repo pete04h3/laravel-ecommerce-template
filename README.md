@@ -26,7 +26,7 @@ Clone the repository
     
     # or with ssh connection:
     
-    git clone git@gitlab.com:peterp4N1K/laravel-ecommerce-template.git
+    git clone git@github.com:pete04h3/laravel-ecommerce-template.git
 
 Switch to the repo folder
 
@@ -64,7 +64,7 @@ You can now access the server at http://localhost:8000
 
 **Command list SSH**
 
-    git clone git@gitlab.com:peterp4N1K/laravel-ecommerce-template.git
+    git clone git@github.com:pete04h3/laravel-ecommerce-template.git
     cd laravel-ecommerce-template
     composer install
     cp .env.example .env
