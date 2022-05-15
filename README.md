@@ -105,7 +105,7 @@ docker run hello-world
 ---------------------------------------------------------------------
 git clone https://github.com/pete04h3/laravel-ecommerce-template.git
 or with SSH:
-git clone git@gitlab.com:peterp4N1K/laravel-ecommerce-template.git
+git clone git@github.com:pete04h3/laravel-ecommerce-template.git
 ---------------------------------------------------------------------
 cd laravel-ecommerce-template
 docker run -v $(pwd):/app composer install
