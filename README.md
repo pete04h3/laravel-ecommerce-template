@@ -21,8 +21,12 @@ Please check the official laravel installation guide for server requirements bef
 Alternative installation is possible without local dependencies relying on [Docker](#docker). 
 
 Clone the repository
-
-    git clone git@gitlab.com:peterp4N1K/laravel-ecommerce-template.git
+    
+    git clone https://github.com/pete04h3/laravel-ecommerce-template.git
+    
+    # or with ssh connection:
+    
+    git clone git@github.com:pete04h3/laravel-ecommerce-template.git
 
 Switch to the repo folder
 
@@ -50,9 +54,17 @@ Start the local development server
 
 You can now access the server at http://localhost:8000
 
-**Command list**
+**Command list HTTPS**
 
-    git clone git@gitlab.com:peterp4N1K/laravel-ecommerce-template.git
+    git clone https://github.com/pete04h3/laravel-ecommerce-template.git
+    cd laravel-ecommerce-template
+    composer install
+    cp .env.example .env
+    php artisan key:generate 
+
+**Command list SSH**
+
+    git clone git@github.com:pete04h3/laravel-ecommerce-template.git
     cd laravel-ecommerce-template
     composer install
     cp .env.example .env
@@ -65,7 +77,7 @@ You can now access the server at http://localhost:8000
 
 ## Database seeding
 
-**Populate the database with seed data with relationships which includes users, articles, comments, tags, favorites and follows. This can help you to quickly start testing the api or couple a frontend and start using it with ready content.**
+**Populate the database with dummy data. This can help you to quickly start testing the api or frontend and start using it with out-of-the-box content.**
 
 Open the DatabaseSeeder and set the property values as per your requirement
 
@@ -81,10 +93,11 @@ Run the database seeder and you're done
     
 ## Docker
 
+# Advanced users
+
 To install with [Docker](https://www.docker.com), run following commands:
 
 ```
-
 usermod -a -G docker user
 su - user
 docker run hello-world
@@ -97,11 +110,12 @@ docker-compose ps
 docker-compose images
 netstat -plntu
 cp .env.example.docker .env
-<-- if you want to change database configuration -->
-run this cmd: docker-compose exec app vim .env
 docker-compose exec app php artisan key:generate
 docker-compose exec app php artisan config:cache
 docker-compose exec app php artisan migrate
+
+<-- if you want to change database configuration -->
+run this cmd: docker-compose exec app vim .env
 <-- if you want to seed database -->
 docker-compose exec app php artisan db:seed
 ```
@@ -120,6 +134,19 @@ The app can be accessed at [http://laravel.ecommerce-template.io/](http://larave
 - [laravel-cors](https://github.com/barryvdh/laravel-cors) - For handling Cross-Origin Resource Sharing (CORS)
 
 ## Folders
+
+- `app` - Contains all the Eloquent models
+- `app/Http/Controllers/Api` - Contains all the api controllers
+- `app/Http/Middleware` - Contains the auth middleware
+- `app/Http/Requests/Api` - Contains all the api form requests
+- `config` - Contains all the application configuration files
+- `database/factories` - Contains the model factory for all the models
+- `database/migrations` - Contains all the database migrations
+- `database/seeds` - Contains the database seeder
+- `routes` - Contains all the routes defined in web.php file
+- `tests` - Contains all the application tests
+
+## Routes
 
 - `app` - Contains all the Eloquent models
 - `app/Http/Controllers/Api` - Contains all the api controllers
