@@ -120,10 +120,9 @@
                     </div>
 
                     <div class="pt-20 small fadeInUp" style="animation-delay: 0.8s;">
-                        <cite><strong>Notion</strong> This is an exam project developed for a PBA, in Web development
-                            spring 2022.<br>
-                            this project has no associtation with Laravel professionally. The
-                            laravel-ecommerce-template is a creation of the author of this website
+                        <strong>Notion</strong><cite>This is an exam project developed for a PBA, in Web development
+                            spring 2022. This project has no associtation with Laravel professionally.
+                            The laravel-ecommerce-template is a creation of the author of this website
                             built using the Laravel framework. All Laravel related assets used, copyrights goes to
                             Laravel.</cite>
                     </div>
@@ -192,7 +191,7 @@
                                         href="https://www.j-w-v.com/writing/index.php/css-s-undersung-property-box-sizing"
                                         target="_blank" rel="noopener noreferrer"> </a></li>
                                 <li class="fadeInUp" style="animation-delay: 1.3s;">
-                                    <p>Access now on <a href="https://gitlab.com/peterp4N1K/laravel-ecommerce-template"
+                                    <p>Access now on <a href="https://github.com/pete04h3/laravel-ecommerce-template"
                                             target="_blank">Github</a>
                                         &amp; <a href="https://gitlab.com/peterp4N1K/laravel-ecommerce-template"
                                             target="_blank">Gitlab</a>
@@ -207,7 +206,7 @@
                                 </li>
                                 <div class="icon-wrapper fadeInUp" style="animation-delay: 1.5s;">
                                     <li class="fadeInUp" style="animation-delay: 1.6s;"><a
-                                            href="https://gitlab.com/peterp4N1K/laravel-ecommerce-template"
+                                            href="https://github.com/pete04h3/laravel-ecommerce-template"
                                             target="_blank">
                                             <i class="fab fa-github"></i></a></li>
                                     <li class="fadeInUp" style="animation-delay: 1.7s;"><a
