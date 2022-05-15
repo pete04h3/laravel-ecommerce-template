@@ -1,4 +1,4 @@
-# Set master image
+# Set master image change this to php:8.1-fpm-alpine for this project
 FROM php:7.2-fpm-alpine
 
 # Copy composer.lock and composer.json
@@ -7,7 +7,7 @@ COPY composer.lock composer.json /var/www/html/
 # Set working directory
 WORKDIR /var/www/html
 
-# Install Additional dependencies
+# Install Additional dependencies change php7 to php8
 RUN apk update && apk add --no-cache \
     build-base shadow vim curl \
     php7 \
