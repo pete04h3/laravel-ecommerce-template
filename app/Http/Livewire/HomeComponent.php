@@ -23,6 +23,9 @@ class HomeComponent extends Component
         $popular_products = Product::inRandomOrder()->get()->take(8);
         $category = HomeCategory::find(1);
         $cats = explode(',', $category->sel_categories);
+        if ($this->$cats == 'array' && is_null($cats)) {
+            return [];
+        }
         $categories = Category::whereIn('id', $cats)->get();
         $no_of_products = $category->no_of_products;
         $sproducts = Product::where('sale_price', '>', 0)->inRandomOrder()->get()->take(8);
