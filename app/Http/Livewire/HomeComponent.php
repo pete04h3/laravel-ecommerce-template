@@ -23,7 +23,7 @@ class HomeComponent extends Component
         $popular_products = Product::inRandomOrder()->get()->take(8);
         $category = HomeCategory::find(1);
         $cats = explode(',', $category->sel_categories);
-        $categories = Category::whereIn('id, $cats')->get();
+        $categories = Category::whereIn('id', $cats)->get();
         $no_of_products = $category->no_of_products;
         $sproducts = Product::where('sale_price', '>', 0)->inRandomOrder()->get()->take(8);
         $ahrefproducts = Product::inRandomOrder()->limit(5)->get()->take(5);
