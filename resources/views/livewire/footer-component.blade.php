@@ -67,7 +67,7 @@
                                 <h3 class="item-header">Contact Details</h3>
                                 <div class="item-content">
                                     <div class="wrap-contact-detail">
-                                        <ul>
+                                      {{--  <ul>
                                             <li>
                                                 <a class="text-muted" href="{{ $setting->address }}"
                                                     target="_blank">
@@ -91,7 +91,7 @@
                                                 </a>
 
                                             </li>
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                 </div>
                             </div>
