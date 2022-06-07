@@ -98,25 +98,19 @@ Run the database seeder and you're done
 To install with [Docker](https://www.docker.com), run following commands:
 
 ```
-ADD NON ROOT USER (you might not need this)
-usermod -a -G docker user
-su - user
-docker run hello-world
 ---------------------------------------------------------------------
 git clone https://github.com/pete04h3/laravel-ecommerce-template.git
 or with SSH:
 git clone git@github.com:pete04h3/laravel-ecommerce-template.git
 ---------------------------------------------------------------------
-cd laravel-ecommerce-template
+cd Docker
 docker run -v $(pwd):/app composer install
-sudo chown -R $USER:$USER ~/path-to/laravel-ecommerce-template
+sudo chown -R $USER:$USER ~/path-to/foldername
 ---------------------------------------------------------------------
 docker-compose up -d --build
 docker-compose ps
-docker-compose images
-netstat -plntu
 ---------------------------------------------------------------------
-cp .env.example.docker .env
+cp .env.example .env
 docker-compose exec app php artisan key:generate
 docker-compose exec app php artisan config:cache
 docker-compose exec app php artisan migrate
@@ -127,19 +121,12 @@ run this cmd: docker-compose exec app vim .env
 docker-compose exec app php artisan db:seed
 ---------------------------------------------------------------------
 ```
-# If there is no errors you should now be able to see your project
-The app can be accessed at [http://laravel.ecommerce-template.io/](http://laravel.ecommerce-template.io/).
 
 ## Full setup guide can be found here:
 [Docker, nginx, mysql, laravel setup](https://www.howtoforge.com/dockerizing-laravel-with-nginx-mysql-and-docker-compose/amp/?fbclid=IwAR3Wwim2FvEjGqMp6m3xd63Z1wXJQwRTPocflFuZR7ieK7E-n2PjRp1BUkA)
 ----------
 
 # Code overview
-
-## Dependencies
-
-- [jwt-auth](https://github.com/tymondesigns/jwt-auth) - For authentication using JSON Web Tokens
-- [laravel-cors](https://github.com/barryvdh/laravel-cors) - For handling Cross-Origin Resource Sharing (CORS)
 
 ## Folders
 
@@ -175,7 +162,7 @@ The app can be accessed at [http://laravel.ecommerce-template.io/](http://larave
 
 ----------
 
-# Testing
+# Run the project
 
 Run the laravel development server
 
@@ -185,23 +172,8 @@ The app can now be accessed at
 
     http://localhost:8000
 
-Request headers
-
-| **Required** 	| **Key**              	| **Value**            	
-|----------	|------------------	|------------------	|
-| Yes      	| Content-Type     	| application/json 	|
-| Yes      	| X-Requested-With 	| XMLHttpRequest   	|
-|  	      	|       	        |                   |
-
 ----------
- 
-# Authentication
- 
-This applications uses JSON Web Token (JWT) to handle authentication. The token is passed with each request using the `Authorization` header with `Token` scheme. The JWT authentication middleware handles the validation and authentication of the token. Please check the following sources to learn more about JWT.
- 
-- https://jwt.io/introduction/
-- https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html
-
+Thank you!
 ----------
 
 # Deploy now with heroku
