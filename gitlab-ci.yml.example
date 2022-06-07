@@ -1,0 +1,103 @@
+stages:
+  - install
+  - build
+  - test
+  - deploy
+image: <registry_external_url>:<port>/<user_name>laravel-ci-cd:latest
+composer:
+  stage: install
+  script:
+    - php -v
+    - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+    - cp .env.example .env
+    - php artisan key:generate
+  artifacts:
+    paths:
+      - vendor/
+      - .env
+    expire_in: 1 days
+    when: always
+  cache:
+    # The variable CI_COMMIT_REF_SLUG 
+    # refers to the slug of the branch.
+    # For example: `master` for the master branch.
+    # We use the CI_JOB_NAME prefix to avoid conflicts with
+    # the `npm` cache that we'll define next.
+    key: $CI_JOB_NAME-$CI_COMMIT_REF_SLUG
+    # Define what to cache.
+    paths:
+      - vendor/
+yarn:
+  # Same stage as `composer` so that they run in parallel.
+  stage: install
+  # Cache the `node_modules` folder
+  # using the `CI_JOB_NAME` suffix on the key.
+  cache:
+    key: $CI_JOB_NAME-$CI_COMMIT_REF_SLUG
+    paths:
+      - node_modules/
+  # Install and compile.
+  script:
+      - yarn --version
+      - yarn --install --pure-lockfile
+  # Provide the other jobs of the pipeline with
+  # the node dependencies and the compiled assets.
+  artifacts:
+    expire_in: 1 days
+    paths:
+      - node_modules/
+      - public/css/
+      - public/js/
+build-yarn:
+  stage: build
+  dependencies:
+    - composer
+    - yarn
+  script:
+    - yarn --version
+    - yarn run production
+  artifacts:
+    paths:
+      - public/css/
+      - public/js/
+      - public/fonts/
+      - public/mix-manifest.json
+    expire_in: 1 days
+    when: always
+build-composer:
+  stage: build
+  dependencies:
+    - composer
+    - yarn
+  script:
+    - php -v
+    - php artisan config:clear
+    - php artisan cache:clear
+    - php artisan config:cache
+    - composer dump-autoload
+  artifacts:
+    paths:
+      - vendor/
+    expire_in: 1 days
+    when: always
+php-unit:
+  stage: test
+  # List of jobs from which it will download the artifacts.
+  dependencies:
+    - composer
+  script:
+    - phpunit --coverage-text --colors=never
+php-codesniffer:
+  stage: test
+  dependencies: []
+  script:
+    - phpcs --standard=PSR2 --extensions=php --ignore=app/Support/helpers.php app
+linter:
+  stage: test
+  script:
+    - yarn --version
+    - yarn run eslint
+ssh:
+  stage: deploy
+  script:
+    - echo "This job deploys something from the $CI_COMMIT_BRANCH branch."
