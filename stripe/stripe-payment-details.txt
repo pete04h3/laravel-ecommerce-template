@@ -1,6 +1,0 @@
-STRIPE CHECKOUT DETAILS: 
-
-Card no:  4242424242424242
-exp mo:  12
-exp y: 2022
-cvc: 567
